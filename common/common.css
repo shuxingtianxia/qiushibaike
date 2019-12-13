@@ -1,0 +1,9 @@
+.u-flex{
+	display: flex;
+}
+.u-f-jc{
+	justify-content: space-between;
+}
+.u-f-aj{
+	align-items: center;
+}
