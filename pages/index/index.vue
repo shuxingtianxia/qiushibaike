@@ -1,104 +1,86 @@
 <template>
 	<view>
-		<view class="list-box">
-			<!-- 第一行 -->
-			<view class="index-list1 u-flex u-f-jc u-f-aj">
-				<view class="head-left u-flex u-f-jc u-f-aj">
-					<image src="../../static/logo.png" mode="widthFix" lazy-load></image>
-					<text>你好</text>
-				</view>
-				<view class="head-right u-flex u-f-aj">
-					<view class="icon iconfont icon-zengjia"></view>关注
-				</view>
-			</view>
-			<!-- 第二行 -->
-			<view class="index-list2">标题</view>
-			<!-- 第三行 -->
-			<view class="index-list3">
-				<image src="../../static/logo.png" mode="widthFix" lazy-load></image>
-			</view>
-			<!-- 第四行 -->
-			<view class="index-list4 u-flex u-f-jc u-f-aj">
-				<view class="u-flex u-f-aj">
-					<view class="u-flex u-f-aj">
-						<view class="icon iconfont icon-icon_xiaolian-mian"></view>
-						10
-					</view>
-					<view class="u-flex u-f-aj">
-						<view class="icon iconfont icon-kulian"></view>
-						10
-					</view>
-				</view>
-				<view class="u-flex u-f-aj">
-					<view class="u-flex u-f-aj">
-						<view class="icon iconfont icon-pinglun1"></view>
-						10
-					</view>
-					<view class="u-flex u-f-aj">
-						<view class="icon iconfont icon-zhuanfa"></view>
-						10
-					</view>
-				</view>
-			</view>
+		<!-- 导航栏 -->
+		<swiper-tab-head
+		 :tabIndex='tabIndex'
+		 @tabtap='tabtap'
+		 ></swiper-tab-head>
+		<!-- 图文列表 -->
+		<view class="uni-tab-bar">
+			<swiper 
+			class="swiper-box" 
+			:current="current"
+			:style="{height:swiperheight+'px'}"
+			@change=tabChange
+			>
+				<swiper-item v-for="items in 9" :key='items'>
+					<scroll-view class="list" scroll-y>
+						<block class="list-box" v-for="item in 9" :key='item'>
+							<index-list></index-list>
+						</block>
+					</scroll-view>
+				</swiper-item>
+			</swiper>
 		</view>
 	</view>
 </template>
 
 <script>
+	import swiperTabHead from '@/components/index/swiper-tab-head.vue'
+	import indexList from '@/components/index/index-list.vue'
 	export default {
+		components: {
+			swiperTabHead,
+			indexList
+		},
 		data() {
 			return {
+				current: 0, // 	swiper所在的index
+				swiperheight: 500,
+				scrollInto: "",
+				tabIndex: 0,
 			}
 		},
 		onLoad() {
-
+			uni.getSystemInfo({
+				success: (res)=> {
+					console.log(res.windowHeight);
+					let height=res.windowHeight-uni.upx2px(100)
+					this.swiperheight=height;
+				}
+			})
+		},
+		// 监听原生标题栏搜索输入框点击事件
+		onNavigationBarSearchInputClicked() {
+			uni.navigateTo({
+				url: '../search/search'
+			})
+		},
+		// 监听原生标题栏按钮点击事件 (取消按钮)
+		onNavigationBarButtonTap(val){
+			console.log(val)
+			if(val.index == 1) {
+				uni.navigateTo({
+					url: '../send-msg/send-msg'
+				})
+			}
 		},
 		methods: {
-
+			// 点解导航栏切换
+			tabtap(index) {
+				this.tabIndex = index
+				this.current = index
+			},
+			// 左右滑动页面
+			tabChange(e) {
+				console.log(e.detail)
+				this.tabIndex = e.detail.current
+			}
 		}
 	}
 </script>
 
-<style lang="scss">
-	.list-box{
-		padding: 20upx;
-		border-bottom: 1upx solid #EEEEEE;
-		.index-list1{
-			.head-left{
-				image{
-					width: 85upx;
-					height: 85upx;
-					margin-right: 10upx;
-					border-radius: 100%;
-				}
-				text{
-					color: #999999;
-				}
-			}
-			.head-right{
-				background: #f4f4f4;
-				border-radius: 5upx;
-				padding: 0 10upx;
-			}
-		}
-		.index-list2{
-			padding-top: 15upx;
-			font-size: 32upx;
-		}
-		.index-list3{
-			position: relative;
-			padding-top: 15upx;
-			image{
-				width: 100%;
-				max-height: 550upx;
-				border-radius: 20upx;
-			}
-		}
-		.index-list4{
-			color: #999999;
-			view{
-				margin: 0 10upx;
-			}
-		}
-	}
+<style lang="scss" scoped>
+	
+	
 </style>

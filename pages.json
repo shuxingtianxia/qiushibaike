@@ -54,6 +54,42 @@
 				"navigationBarTitleText": "我的"
 			}
         }
+        ,{
+            "path" : "pages/search/search",
+            "style" : {
+				"app-plus": {
+					"titleNView": {
+						/* 搜索框配置 */
+						"searchInput": {
+							"align": "left",
+							"backgroundColor": "#F7F7F7",
+							"borderRadius": "4px",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#ccc"
+						},
+						"buttons": [
+							{
+								"color":"#000000",
+								"colorPressed":"#BBBBBB",
+								"float":"right",
+								"fontSize":"16px",
+								"text":"取消"
+							}
+						]
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/send-msg/send-msg",
+            "style" : {
+				"app-plus": {
+					"animationType": "slide-in-bottom", // 新窗体从底部进入
+					"animationDuration": 200, // 窗口动画持续时间
+					"titleNView":false // 禁止原生导航
+				}
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
