@@ -11,7 +11,7 @@
 			class="swiper-box" 
 			:current="current"
 			:style="{height:swiperheight+'px'}"
-			@change=tabChange
+			@change="tabChange"
 			>
 				<swiper-item v-for="items in 9" :key='items'>
 					<scroll-view class="list" scroll-y>
