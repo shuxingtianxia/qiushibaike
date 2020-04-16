@@ -1,5 +1,5 @@
 <template>
-	<view class="topic-list u-flex">
+	<view class="topic-list u-flex" @click="toTopicDetail">
 		<view class="topic-left">
 			<image src="../../static/logo.png" mode="widthFix" lazy-load=""></image>
 		</view>
@@ -14,6 +14,15 @@
 </template>
 
 <script>
+	export default{
+		methods: {
+			toTopicDetail() {
+				uni.navigateTo({
+					url: '/pages/topic-detail/topic-detail'
+				})
+			}
+		}
+	}
 </script>
 
 <style scoped lang="scss">

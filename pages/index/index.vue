@@ -4,6 +4,7 @@
 		<swiper-tab-head
 		 :tabIndex='tabIndex'
 		 @tabtap='tabtap'
+		 :navList='navList'
 		 ></swiper-tab-head>
 		<!-- 图文列表 -->
 		<view class="uni-tab-bar">
@@ -13,7 +14,7 @@
 			:style="{height:swiperheight+'px'}"
 			@change="tabChange"
 			>
-				<swiper-item v-for="items in 9" :key='items'>
+				<swiper-item v-for="items in 7" :key='items'>
 					<scroll-view class="list" scroll-y>
 						<block class="list-box" v-for="item in 9" :key='item'>
 							<index-list></index-list>
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-	import swiperTabHead from '@/components/index/swiper-tab-head.vue'
+	import swiperTabHead from '@/components/common/swiper-tab-head.vue'
 	import indexList from '@/components/index/index-list.vue'
 	export default {
 		components: {
@@ -39,6 +40,7 @@
 				swiperheight: 500,
 				scrollInto: "",
 				tabIndex: 0,
+				navList: ['关注', '推荐', '体育', '热点', '财经', '娱乐']
 			}
 		},
 		onLoad() {

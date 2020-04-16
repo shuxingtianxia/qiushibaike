@@ -2,7 +2,7 @@
 	<view class="common-list u-flex u-f-jcs">
 		<view class="common-fl"><image src="../../static/common/addinput.png" mode="widthFix" lazy-load></image></view>
 		<view class="common-fr">
-			<view class="u-flex u-f-jcs">
+			<view class="u-flex u-f-jcs u-f-aic">
 				<view class="u-flex u-f-jcs u-f-aic">
 					<text class="name">哈哈哈</text>
 					<view class="tag-sex icon iconfont icon-nan">25</view>
@@ -59,9 +59,15 @@
 			margin-left: 14upx;
 			padding: 2upx;
 			flex: 1;
+			border-bottom: 1px solid #eee;
 			.name{
 				color:#999999;
 				font-size: 32upx;;
+			}
+			.icon-zengjia{
+				background: #EEEEEE;
+				padding: 0 10upx;
+				font-size: 26upx;
 			}
 			.tag-sex{
 				background: #007AFF;
@@ -113,10 +119,14 @@
 				}
 			}
 			.commnt-last{
+				margin-top: 10upx;
+				padding-bottom: 5upx;
+				color:#aaa;
 				.goods{
 					color:#aaa;
 					view{
 						margin-right: 10upx;
+						font-size: 26upx;
 					}
 				}
 			}

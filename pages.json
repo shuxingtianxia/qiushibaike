@@ -39,6 +39,7 @@
 	    ,{
             "path" : "pages/news/news",
             "style" : {
+				"navigationBarTitleText": "动态",
 				"app-plus": {
 					"titleNView": false,
 					"bounce":"none"//关闭反弹效果
@@ -48,7 +49,13 @@
         ,{
             "path" : "pages/paper/paper",
             "style" : {
-				"navigationBarTitleText": "小纸条"
+				"navigationBarTitleText": "小纸条",
+				"app-plus": {
+					"animationType": "slide-in-bottom", // 新窗体从底部进入
+					"animationDuration": 200, // 窗口动画持续时间
+					"titleNView":false // 禁止原生导航
+				}
+				
 			}
         }
         ,{
@@ -93,6 +100,22 @@
 				}
 			}
         }
+		,{
+		    "path" : "pages/topic-classify/topic-classify",
+		    "style" : {
+				"navigationBarTitleText": "话题分类"
+			}
+		}
+		,{
+		    "path" : "pages/topic-detail/topic-detail",
+		    "style" : {
+				"app-plus": {
+					"animationType": "slide-in-bottom", // 新窗体从底部进入
+					"animationDuration": 200, // 窗口动画持续时间
+					"titleNView":false // 禁止原生导航 隐藏原生导航
+				}
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -1,7 +1,13 @@
 <template>
 	<view class="uni-tab-bar">
 		<scroll-view class="uni-swiper-tab" :scroll-x="true" :show-scrollbar="false" >
-			<view v-for="(tab,index) in 9" :key="tab.id" class="swiper-tab-list" :class="tabIndex == index ? 'active' : ''" :data-current="index" @click="ontabtap(index)">
+			<view v-for="(tab,index) in navList" :key="tab.id" 
+				class="swiper-tab-list" 
+				:class="tabIndex == index ? 'active' : ''" 
+				:data-current="index"
+				@click="ontabtap(index)"
+				:style="scrollItemStyle"
+			>
 				{{tab}}
 				<view class="swiper-tab-line"></view>
 			</view>
@@ -14,6 +20,8 @@
 	export default{
 		props: {
 			tabIndex: Number,
+			navList: Array,
+			scrollItemStyle: String
 		},
 		data() {
 			return{
@@ -31,6 +39,7 @@
 <style scoped lang="scss">
 	.uni-tab-bar{
 		.uni-swiper-tab{
+			border-bottom: 1upx solid #EEEEEE;
 			.swiper-tab-list{
 				color: #969696;
 				font-weight: bold;

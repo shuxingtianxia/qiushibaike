@@ -30,7 +30,7 @@
 					<view class="hot-nav">
 						<view class="hot-classify u-flex u-f-jcs">
 							<view class="hot-title">热门分类</view>
-							<view class="u-flex hot-more">更多<view class="icon iconfont icon-jinru"></view></view>
+							<view class="u-flex hot-more" @click="toMore">更多<view class="icon iconfont icon-jinru"></view></view>
 						</view>
 						<view class="u-flex u-f-jcc hot-tag">
 							<view class="u-flex u-f-jcc" v-for="(item, index) in topic" :key="index">{{item.name}}</view>
@@ -51,7 +51,7 @@
 <script>
 	import newsHead from '@/components/news/news-head.vue'
 	import commonList from '@/components/common/common-list.vue'
-	import topicList from '@/components/news/topic-list.vue'
+	import topicList from '@/components/common/topic-list.vue'
 	export default {
 		components: {
 			newsHead,
@@ -93,6 +93,12 @@
 			tabChange(e){
 				this.tabIndex = e.detail.current
 			},
+			// 去话题分类页面
+			toMore() {
+				uni.navigateTo({
+					url: '../topic-classify/topic-classify'
+				})
+			}
 		}
 	}
 </script>
